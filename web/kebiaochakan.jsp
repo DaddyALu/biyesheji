@@ -74,6 +74,7 @@
                                 <c:set var="flag" value="true"></c:set>
                             </c:if>
                         </c:forEach>
+                        <br>
                         ${get.jiaoshi}
                     </td>
                 </c:forEach>
@@ -89,6 +90,7 @@
                                 <c:set var="flag" value="true"></c:set>
                             </c:if>
                         </c:forEach>
+                        <br>
                         ${get.jiaoshi}
                     </td>
                 </c:forEach>
@@ -104,6 +106,7 @@
                                 <c:set var="flag" value="true"></c:set>
                             </c:if>
                         </c:forEach>
+                        <br>
                         ${get.jiaoshi}
                     </td>
                 </c:forEach>
@@ -124,6 +127,7 @@
                                 <c:set var="flag" value="true"></c:set>
                             </c:if>
                         </c:forEach>
+                        <br>
                         ${get.jiaoshi}
                     </td>
                 </c:forEach>
@@ -139,6 +143,7 @@
                                 <c:set var="flag" value="true"></c:set>
                             </c:if>
                         </c:forEach>
+                        <br>
                         ${get.jiaoshi}
                     </td>
                 </c:forEach>
@@ -154,6 +159,7 @@
                                 <c:set var="flag" value="true"></c:set>
                             </c:if>
                         </c:forEach>
+                        <br>
                         ${get.jiaoshi}
                     </td>
                 </c:forEach>

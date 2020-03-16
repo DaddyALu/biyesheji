@@ -53,6 +53,7 @@
                     <td>第一节</td>
                         <c:forEach var="get" items="${sessionScope.ks}" begin="0" end="4">
                             <td>
+                                <%-- 显示该节次排了什么课，如果没排或者排的课被从可选课程中删除，则显示空白 --%>
                                 <c:forEach var="getss" items="${sessionScope.kss}">
                                     <c:if test="${getss.subject==get.subject}">
                                         ${get.subject}
