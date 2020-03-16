@@ -24,7 +24,7 @@
                 <td><input type="text" name="id"></td>
                 <td><input type="text" name="subject"></td>
 <%--                <td><input type="submit" value="确认添加"></td>--%>
-                <a class="btn btn-primary" role="button" id="btnA">确认添加</a>
+                <td><a class="btn btn-primary" role="button" id="btnA">确认添加</a></td>
             </tr>
             </form>
         </table>
