@@ -36,7 +36,7 @@
                             <td><%=c[k]%></td>
                             <td>
                                 <a href="ChakanServlet?id=<%=(i+1)+""+(k+1)%>">查看</a>
-                                <a href="GuanliServlet?id=<%=(i+1)+""+(k+1)%>">管理</a>
+                                <a href="GuanliServlet?id=<%=(i+1)+""+(k+1)%>">排课</a>
                                 <a href="GaijiaoshiServlet?id=<%=(i+1)+""+(k+1)%>">安排教师</a>
                             </td>
                         </tr>

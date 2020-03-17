@@ -35,7 +35,7 @@
         <div class="div_title" style="position: fixed;right: 0px">
             欢迎登陆，${sessionScope.username}
             <span class="glyphicon glyphicon-user"></span> &emsp;
-            <a href="index.jsp">登出</a>
+            <a href="LogoutServlet">登出</a>
         </div>
     </div>
 
