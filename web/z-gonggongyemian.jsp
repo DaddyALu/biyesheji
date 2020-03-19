@@ -43,7 +43,7 @@
     <div style="width: 15%; height: 800px; float: left; background-color: #f5f5f5">
         <ul class="nav nav-pills nav-stacked">
             <li id="home" role="presentation"><a href="home.jsp">首页</a></li>
-            <li id="kebiao" role="presentation"><a href="KebiaoServlet">管理课表</a></li>
+            <li id="kebiao" role="presentation"><a href="KebiaoServlet">管理班级/课表</a></li>
             <li id="kemu" role="presentation"><a href="KemuServlet">编辑科目</a></li>
             <li id="jiaoshi" role="presentation"><a href="JiaoshiServlet">查看教师</a></li>
         </ul>
