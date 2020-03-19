@@ -28,21 +28,37 @@ public class ClassesTianjiaServlet extends HttpServlet {
         String banji = req.getParameter("banji");
         String desc = req.getParameter("desc");
 
-        //添加时需要先添加班级信息，否则先添加课表数据会显示cno不存在
-
-        //添加班级信息
-        ClassesUpdate up = new ClassesUpdate();
-        up.add(cid,nianji,banji,desc);
-
-        //为该班级创建相应的课表数据
-        KebiaoUpdate kbup = new KebiaoUpdate();
-        kbup.addAll(cid);
-
-        //查询并获取添加后的 最新班级列表
+        //先判断该班级编号是否存在，若不存在才可添加
+        Boolean flag = false;
         ClassesAll cs = new ClassesAll();
         List<Classes> css = cs.findAll();
-        req.getSession().setAttribute("css",css);
+        for (Classes classes : css) {
+            if(classes.getCid() == Integer.parseInt(cid)){
+                flag = true;
+            }
+        }
 
-        resp.sendRedirect("kebiao.jsp");
+        //如果不存在重复，执行添加
+        if (!flag){
+            //添加时需要先添加班级信息，否则先添加课表数据会显示cno不存在
+
+            //添加班级信息
+            ClassesUpdate up = new ClassesUpdate();
+            up.add(cid,nianji,banji,desc);
+
+            //为该班级创建相应的课表数据
+            KebiaoUpdate kbup = new KebiaoUpdate();
+            kbup.addAll(cid);
+
+            //查询并获取添加后的 最新班级列表
+            css = cs.findAll();
+            req.getSession().setAttribute("css",css);
+
+            resp.sendRedirect("kebiao.jsp");
+        }else {
+            req.getSession().setAttribute("flag","1");
+            resp.sendRedirect("banjitianjia.jsp");
+        }
+
     }
 }

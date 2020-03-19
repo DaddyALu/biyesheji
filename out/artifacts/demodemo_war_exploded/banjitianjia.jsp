@@ -48,6 +48,11 @@
                 <tr>
                     <td colspan="5"><a class="btn btn-default" href="kebiao.jsp">返回</a></td>
                 </tr>
+                <c:if test="${sessionScope.flag == '1'}">
+                    <tr>
+                        <td colspan="5" style="text-align: center; font-size: 20px; color: purple">该班级编号已存在！</td>
+                    </tr>
+                </c:if>
             </form>
         </table>
     </div>
