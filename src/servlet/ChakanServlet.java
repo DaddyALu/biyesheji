@@ -23,14 +23,15 @@ public class ChakanServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //通过请求体的id判读是读哪张表
-        String flag = "kebiao"+req.getParameter("id");
+        String flag = ""+req.getParameter("id");
+
+        //获取当前访问课表的班级信息
+        req.getSession().setAttribute("banji",""+req.getParameter("name"));
 
         //课表
         KebiaoAll k = new KebiaoAll();
         List<Kebiao> ks = k.findAll(flag);
         req.getSession().setAttribute("ks",ks);
-
-        req.getSession().setAttribute("banji",""+req.getParameter("id"));
 
         //科目
         KemuAll kk = new KemuAll();

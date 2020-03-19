@@ -32,7 +32,7 @@
     <div style="width: 100%; height: 100px; background-color: #cee9ea">
         <div class="div_title"><img src="img/logo.jpg" style="width: 130px; height: 90px"></div>
         <div class="div_title" style="font-size: 24px">中 学 排 课 系 统</div>
-        <div class="div_title" style="position: fixed;right: 0px">
+        <div class="div_title" style="float: right">
             欢迎登陆，${sessionScope.username}
             <span class="glyphicon glyphicon-user"></span> &emsp;
             <a href="LogoutServlet">登出</a>
@@ -43,7 +43,7 @@
     <div style="width: 15%; height: 800px; float: left; background-color: #f5f5f5">
         <ul class="nav nav-pills nav-stacked">
             <li id="home" role="presentation"><a href="home.jsp">首页</a></li>
-            <li id="kebiao" role="presentation"><a href="kebiao.jsp">管理课表</a></li>
+            <li id="kebiao" role="presentation"><a href="KebiaoServlet">管理课表</a></li>
             <li id="kemu" role="presentation"><a href="KemuServlet">编辑科目</a></li>
             <li id="jiaoshi" role="presentation"><a href="JiaoshiServlet">查看教师</a></li>
         </ul>

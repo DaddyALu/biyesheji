@@ -1,9 +1,27 @@
 package entity;
 
 public class Kebiao {
+    private int kid;
     private String jieci;
     private String subject;
     private String jiaoshi;
+    private int cno;
+
+    public int getKid() {
+        return kid;
+    }
+
+    public void setKid(int kid) {
+        this.kid = kid;
+    }
+
+    public int getCno() {
+        return cno;
+    }
+
+    public void setCno(int cno) {
+        this.cno = cno;
+    }
 
     public String getJieci() {
         return jieci;

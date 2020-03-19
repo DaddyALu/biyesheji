@@ -25,10 +25,11 @@ public class GaijiaoshiServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //确认表
-        String flag = "kebiao"+req.getParameter("id");
+        String flag = ""+req.getParameter("id");
         req.getSession().setAttribute("flag",flag);
 
-        req.getSession().setAttribute("banji2",""+req.getParameter("id"));
+        //获取当前访问课表的班级信息
+        req.getSession().setAttribute("banji",""+req.getParameter("name"));
 
         //教师
         TeacherDao teacherDao = new TeacherDaoImpl();

@@ -26,10 +26,11 @@ public class GuanliServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //确认表
-        String flag = "kebiao"+req.getParameter("id");
+        String flag = ""+req.getParameter("id");
         req.getSession().setAttribute("flag",flag);
 
-        req.getSession().setAttribute("banji1",""+req.getParameter("id"));
+        //获取当前访问课表的班级信息
+        req.getSession().setAttribute("banji",""+req.getParameter("name"));
 
         //课表
         KebiaoAll k = new KebiaoAll();

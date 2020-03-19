@@ -18,41 +18,16 @@ public class KebiaoAll {
         List<Kebiao> ks = new ArrayList<Kebiao>();
         try {
             conn = DBConn.getConn();
-            switch (flag){
-                case "kebiao11":
-                    ps = conn.prepareStatement("select * from kebiao11");
-                    break;
-                case "kebiao12":
-                    ps = conn.prepareStatement("select * from kebiao12");
-                    break;
-                case "kebiao13":
-                    ps = conn.prepareStatement("select * from kebiao13");
-                    break;
-                case "kebiao21":
-                    ps = conn.prepareStatement("select * from kebiao21");
-                    break;
-                case "kebiao22":
-                    ps = conn.prepareStatement("select * from kebiao22");
-                    break;
-                case "kebiao23":
-                    ps = conn.prepareStatement("select * from kebiao23");
-                    break;
-                case "kebiao31":
-                    ps = conn.prepareStatement("select * from kebiao31");
-                    break;
-                case "kebiao32":
-                    ps = conn.prepareStatement("select * from kebiao32");
-                    break;
-                case "kebiao33":
-                    ps = conn.prepareStatement("select * from kebiao33");
-                    break;
-            }
+            ps = conn.prepareStatement("select * from kebiao where cno = ?");
+            ps.setString(1,flag);
             rs = ps.executeQuery();
             while (rs.next()){
                 Kebiao k = new Kebiao();
+                k.setKid(rs.getInt("kid"));
                 k.setJieci(rs.getString("jieci"));
                 k.setSubject(rs.getString("subject"));
                 k.setJiaoshi(rs.getString("jiaoshi"));
+                k.setCno(rs.getInt("cno"));
                 ks.add(k);
             }
         } catch (Exception e) {

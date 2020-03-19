@@ -10,35 +10,17 @@
 <%@include file="z-gonggongyemian.jsp"%>
 <html>
 <head>
-    <title>Title</title>
-    <script>
-        $(function () {
-            $("#kebiao").attr("class","active");
-        })
-    </script>
+    <title>查看课表</title>
 </head>
 <body>
-    <%
-        String[] list = {"一年级1班","一年级2班","一年级3班","二年级1班","二年级2班","二年级3班","三年级1班","三年级2班","三年级3班"};
-        String s = null;
-        int banji = Integer.parseInt((String)session.getAttribute("banji"));
-        switch (banji){
-            case 11: s = list[0];break;
-            case 12: s = list[1];break;
-            case 13: s = list[2];break;
-            case 21: s = list[3];break;
-            case 22: s = list[4];break;
-            case 23: s = list[5];break;
-            case 31: s = list[6];break;
-            case 32: s = list[7];break;
-            case 33: s = list[8];break;
-        }
-    %>
+    <%-- 判断当前页 --%>
+    <flag style="display: none" id="flag">kebiao</flag>
+
     <%-- 主要部分 --%>
     <div style="width:85%; float: left; overflow:hidden;">
         <table class="table table-bordered" style="height: 700px">
             <tr>
-                <td><%=s%></td>
+                <td><%=session.getAttribute("banji")%></td>
                 <td>节次</td>
                 <td>周一</td>
                 <td>周二</td>
