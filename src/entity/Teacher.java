@@ -8,6 +8,31 @@ public class Teacher {
     private String subject;
     private int tel;
 
+    private String jieci;
+    private String cno;
+    private String desc;
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public String getCno() {
+        return cno;
+    }
+    public void setCno(String cno) {
+        this.cno = cno;
+    }
+    public String getJieci() {
+        return jieci;
+    }
+    public void setJieci(String jieci) {
+        this.jieci = jieci;
+    }
+
     public int getTid() {
         return tid;
     }

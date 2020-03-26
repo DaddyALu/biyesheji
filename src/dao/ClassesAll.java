@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClassesAll {
+    Connection conn = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
 
     public List<Classes> findAll(){
-        Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
         List<Classes> cs = new ArrayList<>();
         try {
             conn = DBConn.getConn();
@@ -36,4 +36,23 @@ public class ClassesAll {
         }
         return cs;
     }
+
+    public String findDesc(String cid){
+        String s = null;
+        try {
+            conn = DBConn.getConn();
+            ps = conn.prepareStatement("select * from classes where cid = ?");
+            ps.setString(1,cid);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                s = rs.getString("desc");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            DBConn.release();
+        }
+        return s;
+    }
+
 }

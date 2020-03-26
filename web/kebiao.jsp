@@ -22,7 +22,7 @@
     <div style="width:85%; height: 800px; float: left; overflow:hidden;">
         <table class="table table-bordered table-striped" style="height: 700px">
             <tr>
-                <td colspan="4"><a class="btn btn-primary" href="ClassesYemianServlet">添加</a></td>
+                <td colspan="5"><a class="btn btn-primary" href="ClassesYemianServlet">添加</a></td>
             </tr>
             <tr>
                 <td>班级编号</td>

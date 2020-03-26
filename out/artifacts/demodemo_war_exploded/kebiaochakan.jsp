@@ -20,7 +20,7 @@
     <div style="width:85%; float: left; overflow:hidden;">
         <table class="table table-bordered" style="height: 700px">
             <tr>
-                <td><%=session.getAttribute("banji")%></td>
+                <td style="color: blue"><%=session.getAttribute("banji")%></td>
                 <td>节次</td>
                 <td>周一</td>
                 <td>周二</td>
@@ -33,15 +33,15 @@
                 <td rowspan="4" align="center">上午</td>
                 <td>第一节</td>
                 <c:forEach var="get" items="${sessionScope.ks}" begin="0" end="4">
-                    <td>
+                    <td style="text-align: center">
                         <%--  如果已选科目已经被删除，则显示空白  --%>
                         <c:forEach var="getss" items="${sessionScope.kss}">
                             <c:if test="${getss.subject==get.subject}">
                                 ${get.subject}
                             </c:if>
                         </c:forEach>
-                        <br>
-                        ${get.jiaoshi}
+                        <br><br>
+                        <font style="font-size: 14px;color: gray">任课教师：</font>${get.jiaoshi}
                     </td>
                 </c:forEach>
             </tr>
@@ -49,14 +49,15 @@
             <tr>
                 <td>第二节</td>
                 <c:forEach var="get" items="${sessionScope.ks}" begin="5" end="9">
-                    <td>
+                    <td align="center">
                         <c:forEach var="getss" items="${sessionScope.kss}">
                             <c:if test="${getss.subject==get.subject}">
                                 ${get.subject}
                                 <c:set var="flag" value="true"></c:set>
                             </c:if>
                         </c:forEach>
-                        <br>
+                        <br><br>
+                        <font style="font-size: 14px;color: gray">任课教师：</font>
                         ${get.jiaoshi}
                     </td>
                 </c:forEach>
@@ -65,14 +66,15 @@
             <tr>
                 <td>第三节</td>
                 <c:forEach var="get" items="${sessionScope.ks}" begin="10" end="14">
-                    <td>
+                    <td align="center">
                         <c:forEach var="getss" items="${sessionScope.kss}">
                             <c:if test="${getss.subject==get.subject}">
                                 ${get.subject}
                                 <c:set var="flag" value="true"></c:set>
                             </c:if>
                         </c:forEach>
-                        <br>
+                        <br><br>
+                        <font style="font-size: 14px;color: gray">任课教师：</font>
                         ${get.jiaoshi}
                     </td>
                 </c:forEach>
@@ -81,14 +83,15 @@
             <tr>
                 <td>第四节</td>
                 <c:forEach var="get" items="${sessionScope.ks}" begin="15" end="19">
-                    <td>
+                    <td align="center">
                         <c:forEach var="getss" items="${sessionScope.kss}">
                             <c:if test="${getss.subject==get.subject}">
                                 ${get.subject}
                                 <c:set var="flag" value="true"></c:set>
                             </c:if>
                         </c:forEach>
-                        <br>
+                        <br><br>
+                        <font style="font-size: 14px;color: gray">任课教师：</font>
                         ${get.jiaoshi}
                     </td>
                 </c:forEach>
@@ -102,14 +105,15 @@
                 <td rowspan="3" align="center">下午</td>
                 <td>第五节</td>
                 <c:forEach var="get" items="${sessionScope.ks}" begin="20" end="24">
-                    <td>
+                    <td align="center">
                         <c:forEach var="getss" items="${sessionScope.kss}">
                             <c:if test="${getss.subject==get.subject}">
                                 ${get.subject}
                                 <c:set var="flag" value="true"></c:set>
                             </c:if>
                         </c:forEach>
-                        <br>
+                        <br><br>
+                        <font style="font-size: 14px;color: gray">任课教师：</font>
                         ${get.jiaoshi}
                     </td>
                 </c:forEach>
@@ -118,14 +122,15 @@
             <tr>
                 <td>第六节</td>
                 <c:forEach var="get" items="${sessionScope.ks}" begin="25" end="29">
-                    <td>
+                    <td align="center">
                         <c:forEach var="getss" items="${sessionScope.kss}">
                             <c:if test="${getss.subject==get.subject}">
                                 ${get.subject}
                                 <c:set var="flag" value="true"></c:set>
                             </c:if>
                         </c:forEach>
-                        <br>
+                        <br><br>
+                        <font style="font-size: 14px;color: gray">任课教师：</font>
                         ${get.jiaoshi}
                     </td>
                 </c:forEach>
@@ -134,14 +139,15 @@
             <tr>
                 <td>第七节</td>
                 <c:forEach var="get" items="${sessionScope.ks}" begin="30" end="34">
-                    <td>
+                    <td align="center">
                         <c:forEach var="getss" items="${sessionScope.kss}">
                             <c:if test="${getss.subject==get.subject}">
                                 ${get.subject}
                                 <c:set var="flag" value="true"></c:set>
                             </c:if>
                         </c:forEach>
-                        <br>
+                        <br><br>
+                        <font style="font-size: 14px;color: gray">任课教师：</font>
                         ${get.jiaoshi}
                     </td>
                 </c:forEach>

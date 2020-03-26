@@ -1,6 +1,7 @@
 package dao;
 
 import entity.Kebiao;
+import entity.Teacher;
 import util.DBConn;
 
 import java.sql.Connection;
@@ -10,11 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KebiaoAll {
+    Connection conn = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
 
     public List<Kebiao> findAll(String flag){
-        Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
         List<Kebiao> ks = new ArrayList<Kebiao>();
         try {
             conn = DBConn.getConn();
@@ -37,4 +38,27 @@ public class KebiaoAll {
         }
         return ks;
     }
+
+    public List<Teacher> jiaoshi(String jiaoshi){
+        List<Teacher> ls = new ArrayList<>();
+        try {
+            conn = DBConn.getConn();
+            ps = conn.prepareStatement("select jieci,cno from kebiao where jiaoshi =?");
+            ps.setString(1,jiaoshi);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                Teacher t = new Teacher();
+                t.setName(jiaoshi);
+                t.setJieci(rs.getString("jieci"));
+                t.setCno(rs.getString("cno"));
+                ls.add(t);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBConn.release();
+        }
+        return ls;
+    }
+
 }

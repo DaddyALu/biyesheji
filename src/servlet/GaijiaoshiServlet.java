@@ -46,6 +46,17 @@ public class GaijiaoshiServlet extends HttpServlet {
         List<Kemu> kss = kk.findAll();
         req.getSession().setAttribute("kss",kss);
 
+        //获得每一位老师被排过的节次
+        List<Teacher> ls = new ArrayList<>();
+        List<List<Teacher>> llll = new ArrayList<>();
+        for (Teacher teacher : teachers) {
+            //获取每一位老师被安排的节次
+            ls = new KebiaoAll().jiaoshi(teacher.getName());
+            llll.add(ls);
+        }
+        req.getSession().setAttribute("llll",llll);
+
+        //页面跳转
         resp.sendRedirect("kebiaojiaoshi.jsp");
 
     }

@@ -24,6 +24,7 @@
                 <td>年龄</td>
                 <td>执教科目</td>
                 <td>联系方式</td>
+                <td></td>
             </tr>
             <c:forEach var="get" items="${sessionScope.ts}">
                 <tr>
@@ -32,6 +33,9 @@
                     <td>${get.age}</td>
                     <td>${get.subject}</td>
                     <td>${get.tel}</td>
+                    <td>
+                        <a class="btn btn-default" href="JiaoshiKebiaoServlet?name=${get.name}">查看课表</a>
+                    </td>
                 </tr>
             </c:forEach>
         </table>

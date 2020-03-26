@@ -34,7 +34,7 @@
                     <td rowspan="4" align="center">上午</td>
                     <td>第一节</td>
                     <c:forEach var="get" items="${sessionScope.ks}" begin="0" end="4">
-                        <td>
+                        <td align="center">
                             <select name="${get.jieci}">
                                 <option value="${get.subject}">原课程：${get.subject}</option>
                                 <c:forEach var="gett" items="${sessionScope.kss}">
@@ -48,7 +48,7 @@
                 <tr>
                     <td>第二节</td>
                     <c:forEach var="get" items="${sessionScope.ks}" begin="5" end="9">
-                        <td>
+                        <td align="center">
                             <select name="${get.jieci}">
                                 <option value="${get.subject}">原课程：${get.subject}</option>
                                 <c:forEach var="gett" items="${sessionScope.kss}">
@@ -62,7 +62,7 @@
                 <tr>
                     <td>第三节</td>
                     <c:forEach var="get" items="${sessionScope.ks}" begin="10" end="14">
-                        <td>
+                        <td align="center">
                             <select name="${get.jieci}">
                                 <option value="${get.subject}">原课程：${get.subject}</option>
                                 <c:forEach var="gett" items="${sessionScope.kss}">
@@ -76,7 +76,7 @@
                 <tr>
                     <td>第四节</td>
                     <c:forEach var="get" items="${sessionScope.ks}" begin="15" end="19">
-                        <td>
+                        <td align="center">
                             <select name="${get.jieci}">
                                 <option value="${get.subject}">原课程：${get.subject}</option>
                                 <c:forEach var="gett" items="${sessionScope.kss}">
@@ -95,7 +95,7 @@
                     <td rowspan="3" align="center">下午</td>
                     <td>第五节</td>
                     <c:forEach var="get" items="${sessionScope.ks}" begin="20" end="24">
-                        <td>
+                        <td align="center">
                             <select name="${get.jieci}">
                                 <option value="${get.subject}">原课程：${get.subject}</option>
                                 <c:forEach var="gett" items="${sessionScope.kss}">
@@ -109,7 +109,7 @@
                 <tr>
                     <td>第六节</td>
                     <c:forEach var="get" items="${sessionScope.ks}" begin="25" end="29">
-                        <td>
+                        <td align="center">
                             <select name="${get.jieci}">
                                 <option value="${get.subject}">原课程：${get.subject}</option>
                                 <c:forEach var="gett" items="${sessionScope.kss}">
@@ -123,7 +123,7 @@
                 <tr>
                     <td>第七节</td>
                     <c:forEach var="get" items="${sessionScope.ks}" begin="30" end="34">
-                        <td>
+                        <td align="center">
                             <select name="${get.jieci}">
                                 <option value="${get.subject}">原课程：${get.subject}</option>
                                 <c:forEach var="gett" items="${sessionScope.kss}">

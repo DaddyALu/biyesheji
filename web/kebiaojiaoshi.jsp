@@ -1,4 +1,8 @@
-<%--
+<%@ page import="dao.KebiaoAll" %>
+<%@ page import="entity.Teacher" %>
+<%@ page import="java.util.List" %>
+<%@ page import="dao.TeacherDaoImpl" %>
+<%@ page import="java.util.ArrayList" %>
   Created by IntelliJ IDEA.
   User: luchengsong
   Date: 2020/3/16
@@ -13,6 +17,7 @@
     <title>安排教师</title>
 </head>
 <body>
+
     <%-- 判断当前页 --%>
     <flag style="display: none" id="flag">kebiao</flag>
 
@@ -33,29 +38,48 @@
                 <tr>
                     <td rowspan="4" align="center">上午</td>
                     <td>第一节</td>
-                        <c:forEach var="get" items="${sessionScope.ks}" begin="0" end="4">
-                            <td>
-                                <%-- 显示该节次排了什么课，如果没排或者排的课被从可选课程中删除，则显示空白 --%>
-                                <c:forEach var="getss" items="${sessionScope.kss}">
-                                    <c:if test="${getss.subject==get.subject}">
-                                        ${get.subject}
+                    <c:forEach var="get" items="${sessionScope.ks}" begin="0" end="4">
+                        <td align="center">
+                            <%-- 显示该节次排了什么课，如果没排或者排的课被从可选课程中删除，则显示空白 --%>
+                            <c:forEach var="getss" items="${sessionScope.kss}">
+                                <c:if test="${getss.subject==get.subject}">
+                                    ${get.subject}
+                                </c:if>
+                            </c:forEach>
+                            <br>
+                            <%-- 显示可编排的教师 --%>
+                            <select name="${get.jieci}">
+                                <option value="${get.jiaoshi}">原教师：${get.jiaoshi}</option>
+                                <%-- 遍历所有教师 --%>
+                                <c:forEach var="flag1" items="${sessionScope.ts}">
+                                    <c:set var="aaaa" value="0"></c:set>
+                                    <%-- 遍历出每一个List<Teacher> --%>
+                                    <c:forEach var="llll" items="${sessionScope.llll}">
+                                        <%-- 遍历出每一个Teacher对象，每一个对象的name都为"教师1"(随List遍历的进行而变化)，jieci为被安排过的节次--%>
+                                        <c:forEach var="jiaoshi" items="${llll}">
+                                            <%-- 当目前遍历到的Teacher对象中的name属性,与select预备要显示的选项的教师名相同时 --%>
+                                            <c:if test="${flag1.name ==jiaoshi.name}">
+                                                <%-- 判断这位教师是否在该节次被安排过，如果没有继续使用下一个该教师的已安排节次来对比 --%>
+                                                <c:if test="${get.jieci == jiaoshi.jieci}">
+                                                    <c:set var="aaaa" value="1"></c:set>
+                                                </c:if>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:forEach>
+                                    <%-- 若未被安排在该节次过，则显示该教师的选项 --%>
+                                    <c:if test="${aaaa == '0'}">
+                                        <option value="${flag1.name}">${flag1.name} - ${flag1.subject}</option>
                                     </c:if>
                                 </c:forEach>
-                                <br>
-                                <select name="${get.jieci}">
-                                    <option value="${get.jiaoshi}">原教师：${get.jiaoshi}</option>
-                                    <c:forEach var="flag1" items="${sessionScope.ts}">
-                                        <option value="${flag1.name}">${flag1.name} ${flag1.subject}</option>
-                                    </c:forEach>
-                                </select>
-                            </td>
-                        </c:forEach>
+                            </select>
+                        </td>
+                    </c:forEach>
                 </tr>
                 <%--  第二节  --%>
                 <tr>
                     <td>第二节</td>
                     <c:forEach var="get" items="${sessionScope.ks}" begin="5" end="9">
-                        <td>
+                        <td align="center">
                             <c:forEach var="getss" items="${sessionScope.kss}">
                                 <c:if test="${getss.subject==get.subject}">
                                     ${get.subject}
@@ -65,7 +89,19 @@
                             <select name="${get.jieci}">
                                 <option value="${get.jiaoshi}">原教师：${get.jiaoshi}</option>
                                 <c:forEach var="flag1" items="${sessionScope.ts}">
-                                    <option value="${flag1.name}">${flag1.name} ${flag1.subject}</option>
+                                    <c:set var="aaaa" value="0"></c:set>
+                                    <c:forEach var="llll" items="${sessionScope.llll}">
+                                        <c:forEach var="jiaoshi" items="${llll}">
+                                            <c:if test="${flag1.name ==jiaoshi.name}">
+                                                <c:if test="${get.jieci == jiaoshi.jieci}">
+                                                    <c:set var="aaaa" value="1"></c:set>
+                                                </c:if>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:forEach>
+                                    <c:if test="${aaaa == '0'}">
+                                        <option value="${flag1.name}">${flag1.name} - ${flag1.subject}</option>
+                                    </c:if>
                                 </c:forEach>
                             </select>
                         </td>
@@ -75,7 +111,7 @@
                 <tr>
                     <td>第三节</td>
                     <c:forEach var="get" items="${sessionScope.ks}" begin="10" end="14">
-                        <td>
+                        <td align="center">
                             <c:forEach var="getss" items="${sessionScope.kss}">
                                 <c:if test="${getss.subject==get.subject}">
                                     ${get.subject}
@@ -85,7 +121,19 @@
                             <select name="${get.jieci}">
                                 <option value="${get.jiaoshi}">原教师：${get.jiaoshi}</option>
                                 <c:forEach var="flag1" items="${sessionScope.ts}">
-                                    <option value="${flag1.name}">${flag1.name} ${flag1.subject}</option>
+                                    <c:set var="aaaa" value="0"></c:set>
+                                    <c:forEach var="llll" items="${sessionScope.llll}">
+                                        <c:forEach var="jiaoshi" items="${llll}">
+                                            <c:if test="${flag1.name ==jiaoshi.name}">
+                                                <c:if test="${get.jieci == jiaoshi.jieci}">
+                                                    <c:set var="aaaa" value="1"></c:set>
+                                                </c:if>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:forEach>
+                                    <c:if test="${aaaa == '0'}">
+                                        <option value="${flag1.name}">${flag1.name} - ${flag1.subject}</option>
+                                    </c:if>
                                 </c:forEach>
                             </select>
                         </td>
@@ -95,7 +143,7 @@
                 <tr>
                     <td>第四节</td>
                     <c:forEach var="get" items="${sessionScope.ks}" begin="15" end="19">
-                        <td>
+                        <td align="center">
                             <c:forEach var="getss" items="${sessionScope.kss}">
                                 <c:if test="${getss.subject==get.subject}">
                                     ${get.subject}
@@ -105,7 +153,19 @@
                             <select name="${get.jieci}">
                                 <option value="${get.jiaoshi}">原教师：${get.jiaoshi}</option>
                                 <c:forEach var="flag1" items="${sessionScope.ts}">
-                                    <option value="${flag1.name}">${flag1.name} ${flag1.subject}</option>
+                                    <c:set var="aaaa" value="0"></c:set>
+                                    <c:forEach var="llll" items="${sessionScope.llll}">
+                                        <c:forEach var="jiaoshi" items="${llll}">
+                                            <c:if test="${flag1.name ==jiaoshi.name}">
+                                                <c:if test="${get.jieci == jiaoshi.jieci}">
+                                                    <c:set var="aaaa" value="1"></c:set>
+                                                </c:if>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:forEach>
+                                    <c:if test="${aaaa == '0'}">
+                                        <option value="${flag1.name}">${flag1.name} - ${flag1.subject}</option>
+                                    </c:if>
                                 </c:forEach>
                             </select>
                         </td>
@@ -120,7 +180,7 @@
                     <td rowspan="3" align="center">下午</td>
                     <td>第五节</td>
                     <c:forEach var="get" items="${sessionScope.ks}" begin="20" end="24">
-                        <td>
+                        <td align="center">
                             <c:forEach var="getss" items="${sessionScope.kss}">
                                 <c:if test="${getss.subject==get.subject}">
                                     ${get.subject}
@@ -130,7 +190,19 @@
                             <select name="${get.jieci}">
                                 <option value="${get.jiaoshi}">原教师：${get.jiaoshi}</option>
                                 <c:forEach var="flag1" items="${sessionScope.ts}">
-                                    <option value="${flag1.name}">${flag1.name} ${flag1.subject}</option>
+                                    <c:set var="aaaa" value="0"></c:set>
+                                    <c:forEach var="llll" items="${sessionScope.llll}">
+                                        <c:forEach var="jiaoshi" items="${llll}">
+                                            <c:if test="${flag1.name ==jiaoshi.name}">
+                                                <c:if test="${get.jieci == jiaoshi.jieci}">
+                                                    <c:set var="aaaa" value="1"></c:set>
+                                                </c:if>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:forEach>
+                                    <c:if test="${aaaa == '0'}">
+                                        <option value="${flag1.name}">${flag1.name} - ${flag1.subject}</option>
+                                    </c:if>
                                 </c:forEach>
                             </select>
                         </td>
@@ -140,7 +212,7 @@
                 <tr>
                     <td>第六节</td>
                     <c:forEach var="get" items="${sessionScope.ks}" begin="25" end="29">
-                        <td>
+                        <td align="center">
                             <c:forEach var="getss" items="${sessionScope.kss}">
                                 <c:if test="${getss.subject==get.subject}">
                                     ${get.subject}
@@ -150,7 +222,19 @@
                             <select name="${get.jieci}">
                                 <option value="${get.jiaoshi}">原教师：${get.jiaoshi}</option>
                                 <c:forEach var="flag1" items="${sessionScope.ts}">
-                                    <option value="${flag1.name}">${flag1.name} ${flag1.subject}</option>
+                                    <c:set var="aaaa" value="0"></c:set>
+                                    <c:forEach var="llll" items="${sessionScope.llll}">
+                                        <c:forEach var="jiaoshi" items="${llll}">
+                                            <c:if test="${flag1.name ==jiaoshi.name}">
+                                                <c:if test="${get.jieci == jiaoshi.jieci}">
+                                                    <c:set var="aaaa" value="1"></c:set>
+                                                </c:if>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:forEach>
+                                    <c:if test="${aaaa == '0'}">
+                                        <option value="${flag1.name}">${flag1.name} - ${flag1.subject}</option>
+                                    </c:if>
                                 </c:forEach>
                             </select>
                         </td>
@@ -160,7 +244,7 @@
                 <tr>
                     <td>第七节</td>
                     <c:forEach var="get" items="${sessionScope.ks}" begin="30" end="34">
-                        <td>
+                        <td align="center">
                             <c:forEach var="getss" items="${sessionScope.kss}">
                                 <c:if test="${getss.subject==get.subject}">
                                     ${get.subject}
@@ -170,7 +254,19 @@
                             <select name="${get.jieci}">
                                 <option value="${get.jiaoshi}">原教师：${get.jiaoshi}</option>
                                 <c:forEach var="flag1" items="${sessionScope.ts}">
-                                    <option value="${flag1.name}">${flag1.name} ${flag1.subject}</option>
+                                    <c:set var="aaaa" value="0"></c:set>
+                                    <c:forEach var="llll" items="${sessionScope.llll}">
+                                        <c:forEach var="jiaoshi" items="${llll}">
+                                            <c:if test="${flag1.name ==jiaoshi.name}">
+                                                <c:if test="${get.jieci == jiaoshi.jieci}">
+                                                    <c:set var="aaaa" value="1"></c:set>
+                                                </c:if>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:forEach>
+                                    <c:if test="${aaaa == '0'}">
+                                        <option value="${flag1.name}">${flag1.name} - ${flag1.subject}</option>
+                                    </c:if>
                                 </c:forEach>
                             </select>
                         </td>
@@ -195,5 +291,6 @@
             })
         })
     </script>
+
 </body>
 </html>
