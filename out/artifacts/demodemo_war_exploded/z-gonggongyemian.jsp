@@ -30,8 +30,8 @@
 <body>
     <%--  标题栏  --%>
     <div style="width: 100%; height: 100px; background-color: #cee9ea">
-        <div class="div_title"><img src="img/logo.jpg" style="width: 130px; height: 90px"></div>
-        <div class="div_title" style="font-size: 24px">中 学 排 课 系 统</div>
+        <div class="div_title"><img src="img/logo1.png" style="width: 100px; height: 90px"></div>
+        <div class="div_title" style="font-size: 27px">排 课 管 理 系 统</div>
         <div class="div_title" style="float: right">
             欢迎登陆，${sessionScope.username}
             <span class="glyphicon glyphicon-user"></span> &emsp;

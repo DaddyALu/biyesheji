@@ -20,11 +20,11 @@
     <div id="main">
         <!-- 学校logo -->
         <div id="div_logo">
-            <img class="img1" src="img/logo.jpg">
+            <img class="img1" src="img/logo.png">
         </div>
         <!-- 页面标题 -->
         <div id="div_title">
-            <b><i>希望中学排课系统</i></b>
+            <b><i>排 课 管 理 系 统</i></b>
         </div>
     </div>
 
